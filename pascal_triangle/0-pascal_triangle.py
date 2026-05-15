@@ -10,10 +10,10 @@ def pascal_triangle(n):
 
     pascal_triangle = [[1]]
     while len(pascal_triangle) != n:
-        previous = pascal[-1]
-        current = [1]
+        previous = pascal_triangle[-1]
+        position = [1]
         for i in range(len(previous) - 1):
-            current.append(previous[i] + previous[i + 1])
-        current.append(1)
-        pascal_triangle.append(current)
+            position.append(previous[i] + previous[i + 1])
+        position.append(1)
+        pascal_triangle.append(position)
     return pascal_triangle
