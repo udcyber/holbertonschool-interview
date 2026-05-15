@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Return a list of lists of integers
 representing the Pascal's triangle of n"""
-# Return: empty list if n <= 0
-# n is always an integer
 
 
 def pascal_triangle(n):
@@ -10,12 +8,12 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    triangle = []
-    row = []
-    prev_row = []
-    for i in range(0, n + 1):
-        row = [L > 0 and L < i - 1 and i > 2 and prev_row[L - 1]
-            + prev_row[L] or 1 for L in range(0, i)]
-        prev_row = row
-        triangle += [row]
-    return triangle[1:]
+    pascal_triangle = [[1]]
+    while len(pascal_triangle) != n:
+        previous = pascal[-1]
+        current = [1]
+        for i in range(len(previous) - 1):
+            current.append(previous[i] + previous[i + 1])
+        current.append(1)
+        pascal_triangle.append(current)
+    return pascal_triangle
