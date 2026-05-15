@@ -4,16 +4,16 @@ representing the Pascal's triangle of n"""
 
 
 def pascal_triangle(n):
-    """Return an empty list if n is negative or 0"""
+    """Pascal's triangle of size n"""
     if n <= 0:
         return []
 
-    pascal_triangle = [[1]]
-    while len(pascal_triangle) != n:
-        previous = pascal_triangle[-1]
-        position = [1]
-        for i in range(len(previous) - 1):
-            position.append(previous[i] + previous[i + 1])
-        position.append(1)
-        pascal_triangle.append(position)
-    return pascal_triangle
+    pascal_triangle = []
+    row = []
+    prev_row = []
+    for i in range(0, n + 1):
+        row = [x > 0 and x < i - 1 and i > 2 and prev_row[x - 1]
+               + prev_row[x] or 1 for x in range(0, i)]
+        prev_row = row
+        pascal_triangle += [row]
+    return pascal_triangle[1:]
