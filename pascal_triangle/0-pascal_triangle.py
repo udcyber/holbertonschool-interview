@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Return a list of lists of integers
 representing the Pascal's triangle of n"""
 
