@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Determine if all the boxes can be opened
 n is a number of locked boxes
