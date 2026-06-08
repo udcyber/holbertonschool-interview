@@ -3,4 +3,5 @@
 ## Project 1 — Pascal's Triangle
 ## Project 2 — Lockboxes
 ## Project 3 — Minimum Operations
-## Project 4 — Log Parsing
+## Project 4 — Log Parsing  
+## Project 5 — UTF-8 Validation  
