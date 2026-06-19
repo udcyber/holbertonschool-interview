@@ -20,7 +20,7 @@ if n < 4:
 
 
 def queens(n, a=[], b=[], c=[]):
-    """ Search for possible positions """
+    """Search for possible positions."""
     if len(a) == n:
         yield a
     else:
@@ -31,7 +31,7 @@ def queens(n, a=[], b=[], c=[]):
 
 
 def solve(n):
-    """ Queens solution """
+    """Queens solution."""
     for solution in queens(n):
         print([list(enumerate(solution))])
 
