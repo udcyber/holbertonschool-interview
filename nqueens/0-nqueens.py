@@ -33,7 +33,7 @@ def queens(n, a=[], b=[], c=[]):
 def solve(n):
     """Queens solution."""
     for solution in queens(n):
-        print([list(enumerate(solution))])
+        print([[i, solution[i]] for i in range(n)])
 
 
 if __name__ == "__main__":
