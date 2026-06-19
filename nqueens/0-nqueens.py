@@ -8,19 +8,28 @@ Write a program that solves the N queens problem.
 import sys
 
 if len(sys.argv) != 2:
-    sys.exit("Usage: nqueens N")
+    print("Usage: nqueens N", file=sys.stderr)
+    sys.exit(1)
 
 try:
     n = int(sys.argv[1])
 except ValueError:
-    sys.exit("N must be a number")
+    print("N must be a number", file=sys.stderr)
+    sys.exit(1)
 
 if n < 4:
-    sys.exit("N must be at least 4")
+    print("N must be at least 4", file=sys.stderr)
+    sys.exit(1)
 
 
-def queens(n, a=[], b=[], c=[]):
+def queens(n, a=None, b=None, c=None):
     """Search for possible positions."""
+    if a is None:
+        a = []
+    if b is None:
+        b = []
+    if c is None:
+        c = []
     if len(a) == n:
         yield a
     else:
