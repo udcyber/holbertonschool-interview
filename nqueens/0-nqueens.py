@@ -1,45 +1,40 @@
 #!/usr/bin/python3
-""""
-0-nqueens.py
+"""
+The N queens puzzle is the challenge of placing N
+non-attacking queens on an NxN chessboard.
+Write a program that solves the N queens problem.
 """
 
-from sys import argv, exit
+import sys
+
+if len(sys.argv) != 2:
+    sys.exit("Usage: nqueens N")
+
+try:
+    n = int(sys.argv[1])
+except ValueError:
+    sys.exit("N must be a number")
+
+if n < 4:
+    sys.exit("N must be at least 4")
+
+
+def queens(n, a=[], b=[], c=[]):
+    """ Search for possible positions """
+    if len(a) == n:
+        yield a
+    else:
+        idx = len(a)
+        for j in range(n):
+            if j not in a and idx + j not in b and idx - j not in c:
+                yield from queens(n, a + [j], b + [idx + j], c + [idx - j])
+
+
+def solve(n):
+    """ Queens solution """
+    for solution in queens(n):
+        print([list(enumerate(solution))])
+
 
 if __name__ == "__main__":
-    if len(argv) != 2:
-        print('Usage: nqueens N')
-        exit(1)
-    try:
-        n = int(argv[1])
-    except BaseException:
-        print('N must be a number')
-        exit(1)
-
-    if n < 4:
-        print('N must be at least 4')
-        exit(1)
-
-    sol = []
-
-    def queens(row, n, sol):
-        if row == n:
-            print(sol)
-        else:
-            for col in range(n):
-                place = [row, col]
-                if valid_placement(sol, place):
-                    sol.append(place)
-                    queens(row + 1, n, sol)
-                    sol.remove(place)
-
-    def valid_placement(sol, place):
-        for queen in sol:
-            if queen[1] == place[1]:
-                return False
-            if queen[0] + queen[1] == place[0] + place[1]:
-                return False
-            if queen[0] - queen[1] == place[0] - place[1]:
-                return False
-        return True
-
-    queens(0, n, sol)
+    solve(n)
